@@ -51,7 +51,7 @@ public class KafkaProducerService {
         random = new Random();
     }
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRateString = "${kafka.message.publish-interval}")
     public void sendMessage() {
         final CurrencyRateMessage currencyRateMessage = createMessage();
         send(topic, currencyRateMessage.toString());
